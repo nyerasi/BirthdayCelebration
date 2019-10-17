@@ -197,7 +197,7 @@ setTimeout(function () {
     $(".bg_music").append(`<audio src="file/happybirthday.mp3" autoplay="autoplay" loop id="bg_music"></audio>`);
     let audio = document.getElementById('bg_music');
     
-    // 这段是兼容微信浏览器的。后面会说到
+    // 这段是兼容微信浏览器的
     document.addEventListener("WeixinJSBridgeReady", function () {
       audio.play();
     }, false);
