@@ -191,10 +191,21 @@ function getTarget() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('bg-music');
-            audio.play();
-    }
-    audioAutoPlay();
-});
+
+setTimeout(function () {
+    let bg_music_src = $('.bg_music').data('src');
+    $(".bg_music").append(`<audio src="file/happybirthday.mp3" autoplay="autoplay" loop id="bg_music"></audio>`);
+    let audio = document.getElementById('bg_music');
+    
+    // 这段是兼容微信浏览器的。后面会说到
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      audio.play();
+    }, false);
+  }, 200)
+
+// https://www.w3schools.com/jsref/met_audio_play.asp
+function click_event() {
+  console.log("clicked");
+  let audio = document.getElementById('bg_music');
+  audio.play();
+}
