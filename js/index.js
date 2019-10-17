@@ -122,7 +122,7 @@ while (textWidth > window.innerWidth) {
 }
 
 c1.width = textWidth;
-c1.height = fontSize * (text[1].length);
+c1.height = fontSize * text[1].length;
 ctx1.font = `900 ${fontSize}px Courier New`;
 
 for (let i = 0, max = text.length; i < max; i++) {
