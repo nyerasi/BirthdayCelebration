@@ -1,6 +1,6 @@
-# HappyBirthday2019
+# For when you're too... lazy? to ship a birthday card
  
- Happy Birthday to Timmy ❤
+ Happy Birthday to Alanna ❤
 
  Live page at [Github](https://patriciaxiao.github.io/HappyBirthday2019/)
 
