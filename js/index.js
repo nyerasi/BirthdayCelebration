@@ -108,7 +108,7 @@ function initializeAnimatedText() {
 // INITIALIZATION
 const [c1, c2, c3] = document.querySelectorAll('canvas');
 const [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'));
-let fontSize = 72;
+let fontSize = 48;
 const rockets = [];
 const shards = [];
 const targets = [];
