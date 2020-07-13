@@ -77,7 +77,8 @@ class Rocket {
     this.shardCount = 15 + Math.floor(Math.random() * 15);
     this.xSpeed = Math.sin(this.angle) * this.blastSpeed;
     this.ySpeed = -Math.cos(this.angle) * this.blastSpeed;
-    this.hue = Math.floor(Math.random() * 360);
+    // changing hue from random * 360, experimenting with different colors
+    this.hue = Math.floor(Math.random() * 90) + 270;
     this.trail = [];
   }
   draw() {
@@ -100,11 +101,14 @@ class Rocket {
     }
   }}
 
+function initializeAnimatedText() {
+
+}
 
 // INITIALIZATION
 const [c1, c2, c3] = document.querySelectorAll('canvas');
 const [ctx1, ctx2, ctx3] = [c1, c2, c3].map(c => c.getContext('2d'));
-let fontSize = 100;
+let fontSize = 72;
 const rockets = [];
 const shards = [];
 const targets = [];
@@ -113,18 +117,21 @@ let counter = 0;
 c1.width = c2.width = c3.width = window.innerWidth;
 c1.height = c2.height = c3.height = window.innerHeight;
 ctx1.fillStyle = '#000';
-const text = ["Dear Timmy:", "Happy Birthday ❤", "Love, Pat"];
+const spacing = "      ";
+// const text = ["Dear Alanna,", "Happy 22nd Birthday!", "Love, Nikhil"];
+const text = ["Alanna,", "Happy 22nd Birthday!", "I love you.", "Yours, Nikhil", spacing, "Tap for a surprise!"];
+
 let textWidth = 99999999;
 
 while (textWidth > window.innerWidth) {
-  ctx1.font = `900 ${fontSize--}px Courier New`;
+  // change font? Courier New -> Avenir Next
+  ctx1.font = `600 ${fontSize--}px Avenir Next`;
   textWidth = ctx1.measureText(text[1]).width;
 }
 
 //c1.width = textWidth;
 //c1.height = fontSize * text[1].length;
-ctx1.font = `900 ${fontSize}px Courier New`;
-
+ctx1.font = `600 ${fontSize}px Avenir Next`;
 for (let i = 0, max = text.length; i < max; i++) {
   ctx1.fillText(text[i], 0, fontSize * (1+i));
 }
@@ -137,6 +144,7 @@ for (let i = 0, max = imgData.data.length; i < max; i += 4) {
   if (alpha && x % fidelity === 0 && y % fidelity === 0) {
     targets.push({ x, y });
   }
+
 }
 
 ctx3.fillStyle = '#FFF';
@@ -191,12 +199,33 @@ function getTarget() {
   }
 }
 
+// fade in image
+function fadeIn(el) {
+    el.style.opacity = 0;
+    var tick = function () {
+        el.style.opacity = +el.style.opacity + 0.01;
+        if (+el.style.opacity < 1) {
+            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+    };
+    tick();
+}
+
+function fadeInImage() {
+  // fades in image, eventually play youtube video?
+    var el = document.getElementById("us");
+    console.log(el);
+    fadeIn(el);
+}
+
+
+// change song too!
 
 setTimeout(function () {
     let bg_music_src = $('.bg_music').data('src');
-    $(".bg_music").append(`<audio src="file/happybirthday.mp3" autoplay="autoplay" loop id="bg_music"></audio>`);
+    $(".bg_music").append(`<audio src="file/easylove.mp3" autoplay="autoplay" loop id="bg_music"></audio>`);
     let audio = document.getElementById('bg_music');
-    
+
     // 这段是兼容微信浏览器的
     document.addEventListener("WeixinJSBridgeReady", function () {
       audio.play();
@@ -206,6 +235,7 @@ setTimeout(function () {
 // https://www.w3schools.com/jsref/met_audio_play.asp
 function click_event() {
   console.log("clicked");
+  fadeInImage();
   let audio = document.getElementById('bg_music');
   audio.play();
 }

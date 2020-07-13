@@ -1,7 +1,49 @@
 body {
-  margin: 0;
-  background: black;
+  margin: 0px;
+  background-color: black;
+  bottom: 20px;
 }
 canvas {
   position: absolute;
+  text-align: right;
+  right: 10px;
+}
+.content-container {
+  display: flex;
+  top: 0px;
+  justify-content: center;
+}
+.selfie {
+  display: inline-block;
+  margin: 0px;
+  float: left;
+}
+.animated-text {
+  display: inline-block;
+  top: 10px;
+  margin: 0px;
+  float: left;
+}
+.img-loader {
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=40);
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+.footnote-text {
+  font-family: "Avenir Next";
+  position: absolute;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  top: 10px;
+  z-index: 10;
+}
+.youtube-video {
+  justify-content: center;
+  width: 75%;
+  height: 50%;
+  background-color: white;
 }
